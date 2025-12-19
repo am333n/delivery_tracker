@@ -1,4 +1,5 @@
 import 'package:delivery_tracking/presentation/bloc/map/bloc/map_bloc.dart';
+import 'package:delivery_tracking/presentation/widgets/animated_marker.dart';
 import 'package:delivery_tracking/presentation/widgets/driver_marker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -71,6 +72,7 @@ class MapWidget extends StatelessWidget {
                 ),
               ],
             ),
+
             MarkerLayer(
               markers: [
                 if (destinationAddress != null) _destination_marker(),
@@ -79,6 +81,7 @@ class MapWidget extends StatelessWidget {
             ),
           ],
         ),
+
         if (showReturnToDriverButton ?? false) _recenterButton(context),
       ],
     );
@@ -95,9 +98,9 @@ class MapWidget extends StatelessWidget {
 
   Marker _driverMarker(BuildContext context) {
     return Marker(
-      point: center ?? currentLocation!,
-      width: 50,
-      height: 50,
+      point: currentLocation!,
+      width: 60,
+      height: 60,
       child: DriverPinMarker(
         driverImage: driverImage,
         pinColor: Theme.of(context).primaryColor.withOpacity(0.5),

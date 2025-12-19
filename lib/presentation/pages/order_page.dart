@@ -227,105 +227,109 @@ class _OrderPageState extends State<OrderPage> {
   ) {
     return Padding(
       padding: const EdgeInsets.all(12),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              CircleAvatar(
-                backgroundImage: NetworkImage(
-                  widget.deliveryDetails.driverImage,
-                ),
-              ),
-              SizedBox(width: 15),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      widget.deliveryDetails.driverName,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      widget.deliveryDetails.licensePlate,
-                      style: Theme.of(
-                        context,
-                      ).textTheme.bodySmall?.copyWith(color: Colors.grey),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(8),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: Theme.of(context).primaryColor,
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Icon(Icons.timer_sharp, color: Colors.white),
-                        SizedBox(width: 8),
-                        Text(
-                          currentETA.displayAsDuration,
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 8),
-                    Text(
-                      'Estimated Time',
-                      style: TextStyle(fontSize: 10, color: Colors.white),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-          Divider(),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 5),
-            width: double.maxFinite,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: Colors.grey[300],
-            ),
-            child: Row(
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
               children: [
-                Expanded(
-                  flex: 1,
-                  child: Text(
-                    'Status:',
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+                CircleAvatar(
+                  backgroundImage: NetworkImage(
+                    widget.deliveryDetails.driverImage,
                   ),
                 ),
+                SizedBox(width: 15),
                 Expanded(
-                  flex: 2,
-                  child: Text(
-                    "${currentLocation?.status.icon}  ${currentLocation?.status.displayName ?? 'unknown'}",
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        widget.deliveryDetails.driverName,
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        widget.deliveryDetails.licensePlate,
+                        style: Theme.of(
+                          context,
+                        ).textTheme.bodySmall?.copyWith(color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    color: Theme.of(context).primaryColor,
+                  ),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Icon(Icons.timer_sharp, color: Colors.white),
+                          SizedBox(width: 8),
+                          Text(
+                            currentETA.displayAsDuration,
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 8),
+                      Text(
+                        'Estimated Time',
+                        style: TextStyle(fontSize: 10, color: Colors.white),
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
-          ),
+            Divider(),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+              width: double.maxFinite,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: Colors.grey[300],
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Text(
+                      'Status:',
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 2,
+                    child: Text(
+                      "${currentLocation?.status.icon}  ${currentLocation?.status.displayName ?? 'unknown'}",
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
 
-          _subText('Total Distance : ${totalRouteDistance.displayAsDistance}'),
-          _subText('Distance Covered: ${traveledDistance.displayAsDistance}'),
-          _subText(
-            'Remaining distance: ${remainingDistance.displayAsDistance}',
-          ),
-          _subText(
-            'Last updated at: ${currentLocation?.timeStamp.displayAsTimeDate}',
-          ),
-        ],
+            _subText(
+              'Total Distance : ${totalRouteDistance.displayAsDistance}',
+            ),
+            _subText('Distance Covered: ${traveledDistance.displayAsDistance}'),
+            _subText(
+              'Remaining distance: ${remainingDistance.displayAsDistance}',
+            ),
+            _subText(
+              'Last updated at: ${currentLocation?.timeStamp.displayAsTimeDate}',
+            ),
+          ],
+        ),
       ),
     );
   }
