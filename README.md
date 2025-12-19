@@ -26,5 +26,6 @@ flutter run
 - **Dependency Injection**: GetIt service locator
 - **Router**: Auto router
 
-
+### Features
+![Features Demo](assets/gif/screen.gif)
 

@@ -1,5 +1,4 @@
 import 'package:delivery_tracking/presentation/bloc/map/bloc/map_bloc.dart';
-import 'package:delivery_tracking/presentation/widgets/animated_marker.dart';
 import 'package:delivery_tracking/presentation/widgets/driver_marker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
