@@ -23,19 +23,6 @@ class TrackingBloc extends Bloc<TrackingEvent, TrackingState> {
   StreamSubscription<Either<String, LocationUpdate?>>? _locationStream;
   final TrackingRepository _repository;
 
-  // void _startTracking(_StartTracking event, emit) {
-  //   final deliveryDetails = event.deliveryDetails;
-  //   add(
-  //     TrackingEvent.getRoute(
-  //       start: LatLng(deliveryDetails.startLat, deliveryDetails.startLng),
-  //       end: LatLng(
-  //         deliveryDetails.destinationLat,
-  //         deliveryDetails.destinationLng,
-  //       ),
-  //     ),
-  //   );
-  // }
-
   Future<void> _getRoute(_GetRoute event, Emitter<TrackingState> emit) async {
     emit(TrackingState.loading());
     final deliverDetails = event.deliveryDetails;

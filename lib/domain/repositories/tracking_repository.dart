@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:dartz/dartz.dart';
 import 'package:delivery_tracking/data/data%20sources/mock_location_data_source.dart';
 import 'package:delivery_tracking/data/models/osrm_response.dart';
-import 'package:delivery_tracking/domain/entities/delivery_info.dart';
 import 'package:delivery_tracking/domain/entities/location_update.dart';
 import 'package:injectable/injectable.dart';
 import 'package:latlong2/latlong.dart';

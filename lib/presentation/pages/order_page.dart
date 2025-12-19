@@ -56,31 +56,7 @@ class _OrderPageState extends State<OrderPage> {
           return PopScope(
             canPop: state is! TrackingLoaded,
             onPopInvoked: (didPop) async {
-              final shouldPop = await showDialog<bool>(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: const Text('Cancel tracking?'),
-                  content: const Text(
-                    'Are you sure you want to stop tracking?',
-                  ),
-                  actions: [
-                    TextButton(
-                      onPressed: () => Navigator.of(context).pop(false),
-                      child: const Text('No'),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        context.read<TrackingBloc>().add(
-                          const TrackingEvent.stopTracking(),
-                        );
-                        Navigator.of(context).pop(true);
-                      },
-                      child: const Text('Yes'),
-                    ),
-                  ],
-                ),
-              );
-
+              final shouldPop = await _showAlertDialog(context);
               if (shouldPop == true) {
                 if (mounted) {
                   Navigator.of(context).pop();
@@ -331,7 +307,7 @@ class _OrderPageState extends State<OrderPage> {
                 Expanded(
                   flex: 2,
                   child: Text(
-                    "${currentLocation?.status.icon}${currentLocation?.status.displayName ?? 'unknown'}",
+                    "${currentLocation?.status.icon}  ${currentLocation?.status.displayName ?? 'unknown'}",
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -379,6 +355,31 @@ class _OrderPageState extends State<OrderPage> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 5.0),
       child: Text(text, style: TextStyle(fontSize: 12, color: Colors.black45)),
+    );
+  }
+
+  Future<bool?> _showAlertDialog(BuildContext context) {
+    return showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Cancel tracking?'),
+        content: const Text('Are you sure you want to stop tracking?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: const Text('No'),
+          ),
+          TextButton(
+            onPressed: () {
+              context.read<TrackingBloc>().add(
+                const TrackingEvent.stopTracking(),
+              );
+              Navigator.of(context).pop(true);
+            },
+            child: const Text('Yes'),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     SizedBox(height: 12),
                     Text(
-                      '${delivery.destinationAddress}',
+                      delivery.destinationAddress,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.bodySmall,
@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '${delivery.driverName}',
+                        delivery.driverName,
                         maxLines: 1,
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                           fontWeight: FontWeight.bold,
@@ -82,8 +82,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       SizedBox(width: 10),
                       Text(
-                        '${delivery.licensePlate}',
-                        // textAlign: TextAlign.center,
+                        delivery.licensePlate,
                         style: Theme.of(context).textTheme.labelSmall?.copyWith(
                           fontWeight: FontWeight.bold,
                         ),
